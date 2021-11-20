@@ -49,7 +49,7 @@ def solve(board):
                     board[i][j] = 0
                     stack.pop()
                     if len(stack) == 0:
-                        return
+                        return []
                     i = stack[-1][0]
                     j = stack[-1][1]
                     continue
@@ -88,9 +88,12 @@ def main():
     print("The Unsolved Sudoku: ")
     displaySudoku(Board)
     if ValidSudoku(Board):
-        print("\nThe Solved Sudoku: ")
         solution = solve(Board)
-        displaySudoku(solution)
+        if not solution:
+            print("There is no solution!")
+        else:
+            print("\nThe Solved Sudoku: ")
+            displaySudoku(solution)
     else:
         print("There is no solution!")
 
