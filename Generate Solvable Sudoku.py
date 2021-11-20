@@ -2,7 +2,6 @@
 # By creating a solved one first and removing parts of it
 # Might take up to 3 seconds to generate one
 from random import *
-import timeit
 
 
 def rand(n=""):
