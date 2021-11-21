@@ -49,11 +49,13 @@ def generate_puzzle(s):
 
 
 def check(board, row, column, num):
-    for i in range(9):
-        if num == board[row][i]:
-            return False
+    for i in range(row):
         if num == board[i][column]:
             return False
+    for i in range(column):
+        if num == board[row][i]:
+            return False
+    for i in range(3 * (row % 3) + (column % 3) + 1):
         if num == board[3 * (row // 3) + (i // 3)][3 * (column // 3) + (i % 3)]:
             return False
     return True
@@ -67,7 +69,7 @@ def display_sudoku(board):
             print(f"{q}+ {q}+ {q}")
         for j in range(9):
             if board[i][j] == 0:
-                s += "x "
+                s += "  "
             else:
                 s += str(board[i][j]) + ' '
             if j % 3 == 2 and j != 8:
